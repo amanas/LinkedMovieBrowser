@@ -1,0 +1,9 @@
+#searchInput {
+  width: 20%;
+  -transition: width 2s ease-in-out;
+}
+
+#searchInput:focus {
+  width: 50%;
+  -transition: width 2s ease-in-out;
+}

@@ -1,20 +1,28 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            aria-expanded="false" aria-controls="navbarsExampleDefault"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault"
+         [ngbCollapse]="!isCollapsed">
+      <input *ngIf="router.url === '/browse'" #searchInput
+             (keydown)="searchTerm($event, searchInput.value)" id="searchInput"
+             name="name" class="form-control form-control-lg"
+             type="search" placeholder="Nombre de una peli... + Enter">
+    </div>
+    <button type="button" *ngIf="router.url !== '/browse'"
+            (click)="goBrowse()" class="navbar-brand btn btn-lg btn-warning">
+      Go to browser
+    </button>
+    <button type="button" *ngIf="router.url !== '/readme'"
+            (click)="goReadme()" class="navbar-brand btn btn-lg btn-warning">
+      Read me
+    </button>
+  </nav>
+</header>
 
+<app-browse *ngIf="router.url === '/browse'"></app-browse>
+
+<app-readme *ngIf="router.url === '/readme'"></app-readme>

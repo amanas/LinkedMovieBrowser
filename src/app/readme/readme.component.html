@@ -1,0 +1,572 @@
+<div class="container">
+	<div class="row">
+	<div class="col-md-8">
+<br/><br/>
+<markdown ngPreserveWhitespaces>
+
+Introducción
+============
+
+Hola, José Luís.
+
+Allá por el 5 de Junio, en el contexto de la asignatura **"Métodos
+Lógicos de Automatización del Razonamiento"**, acordamos que realizaría
+una práctica de carácter bastante abierto/libre en dónde se utilizase la
+Web Semántica. La idea era realizar algún tipo de ejemplo práctico en
+dónde se utilizara este tipo de representación del conocimiento.
+
+Te propuse desarrollar un pequeño navegador que permitiese explorar o
+descubrir contenidos del ámbito del cine: películas, actores,
+directores, etc.
+
+Puedes revisar el resultado de este trabajo en
+<https://amanas17.stackblitz.io>.
+
+A continuación aterrizo con un poco más de detalle en el contexto de lo
+que he estado haciendo y te explico el funcionamiento y tecnologías
+utilizadas.
+
+Web Semántica
+=============
+
+A nivel técnico, se puede definir la web semántica como aquel conjunto
+de actividades desarrolladas en el seno del entorno World Wide Web
+(WWW), para crear tecnologías de publicación de datos que sean más
+fácilmente legibles para las aplicaciones informáticas.
+
+A todos nos ha ocurrido alguna vez que al hacer una búsqueda en Internet
+nos han aparecido resultados que, aunque contienen las palabras clave
+que hemos buscado, no tienen nada que ver con el tipo de información en
+la que estamos interesados.
+
+A través de la semántica lo que se busca es eliminar este problema,
+consiguiendo que la información que se muestra al usuario se amolde lo
+máximo posible a lo que de verdad está buscando. Para ello, la búsqueda
+se realiza **no centrándose únicamente en los parámetros buscados, sino
+en la semántica o significado de los mismos**.
+
+Puntos fundamentales de la Web Semántica
+----------------------------------------
+
+La Web Semántica se basa en dos puntos fundamentales:
+
+-   La descripción del significado. Dónde se definen los conceptos.
+-   La manipulación automática de estas descripciones. Se efectúa
+    mediante lógica y motores de inferencia.
+
+En la descripción del significado se articula la semántica, los
+metadatos y las ontologías.
+
+**La semántica:** es el estudio del significado de los términos
+lingüísticos.
+
+En nuestro contexto de la Web Semántica, se pretende dotar de
+significado interpretable por parte de las máquinas, como información
+adicional que pueda ser comprendida y procesada por una computadora.
+
+**Los Metadatos:** son datos que describen otros datos, en este contexto
+los datos que describen recursos de la web.
+
+La distinción entre datos y metadatos es relativa, pues depende de la
+aplicación. Los metadatos de una aplicación pueden ser los datos que
+maneja otra aplicación.
+
+**Las Ontologías:** una ontología es una jerarquía de conceptos con
+atributos y relaciones, que define una terminología consensuada para
+definir redes semánticas de unidades de información interrelacionadas y
+con ciertas reglas.
+
+Una ontología se puede definir como una *«especificación explícita y
+formal de una conceptualización compartida»* según (Gruber, 1993) de
+esta manera:
+
+-   Es **explícita**, porque define los conceptos, propiedades,
+    relaciones, funciones, axiomas y restricciones que la componen.
+-   Es **formal**, porque es legible e interpretable por las máquinas.
+-   Es una **conceptualización**, porque es un modelo abstracto y una
+    vista simplificada de las entidades que representa.
+-   Finalmente, es **compartida** porque ha habido un consenso previo
+    sobre la información que ha sido acordado por un grupo de expertos.
+
+Ventajas
+--------
+
+Incorpora contenido semántico a las páginas que se suben a Internet.
+Esto permite una mejor organización de la información, asegurando
+búsquedas más precisas por significado y no por contenido textual.
+
+Permite a las computadoras la gestión de conocimiento, hasta el momento
+reservada a las personas (hace uso de inteligencia artificial).
+
+Además, al dotar de contenido semántico a la información, los
+ordenadores estarán más cerca de desarrollar una inteligencia
+artificial, al entender el lenguaje humano de una forma mucho más
+completa.
+
+Inconvenientes
+--------------
+
+Es costoso y laborioso adaptar los documentos de Internet, para poder
+ser procesados de forma semántica (a esto hay que sumar los problemas
+del idioma).
+
+Es necesario unificar los estándares semánticos y proveer relaciones de
+equivalencia entre conceptos. Por ejemplo, en el caso del código postal,
+se debe establecer que CP es igual a ZC “zip code” en el caso del
+inglés.
+
+RDF (Resource Description Framework)
+------------------------------------
+
+El modelo lógico de RDF provee un método general y flexible para
+descomponer cualquier tipo de conocimiento es piezas más pequeñas,
+conocidas como triples, y siguiendo algunas reglas acerca del
+significado de dichas piezas. El principal objetivo es obtener lo que se
+conoce como un grafo dirigido etiquetado, en el que cada arista
+representa un hecho, o relación entre dos cosas.
+
+Un hecho representado de esta manera tiene tres partes: Un sujeto, un
+predicado y un objeto. El sujeto es lo que está al inicio de la arista y
+se le asocia con un nodo, el predicado es el tipo de arista, es decir la
+etiqueta, y une el nodo sujeto con el nodo objeto, que es lo que está al
+final de la arista.
+
+Un objeto de un triple puede funcionar como el sujeto de otro triple.
+Así mismo, RDF permite una forma de rectificación (una declaración de
+una declaración), que significa que cualquier declaración de RDF puede
+ser usada como sujeto en un triple. RDF además no restringe la forma de
+serializar los triples, es por ello que soporta varios formatos
+posibles: RDF/XML, N3, Turtle, Json-LD, etc.
+
+El modelo de datos que propone RDF consiste en tres tipos de objetos:
+
+-   **Recursos**: Cualquier objeto de la Web identificable unívocamente
+    mediante una URI, es decir, un identificador uniforme de recursos
+    como una URL. Un recurso puede ser desde una parte de una página
+    web, como por ejemplo, un elemento HTML dentro de un documento,
+    hasta una colección de páginas, por lo que, en síntesis, un recurso
+    es cualquier objeto de información.
+
+-   **Propiedades**: Aspectos específicos, atributos o relaciones
+    utilizadas para describir recursos. Cada tipo de propiedad tiene sus
+    valores específicos y define los valores permitidos, los tipos de
+    recursos que puede describir y las relaciones que existen entre las
+    distintas propiedades.
+
+-   **Descripciones**: Son el conjunto formado por un recurso, un nombre
+    de propiedad y el valor de esa propiedad. Por lo tanto, una
+    declaración está compuesta por tres partes individuales:
+    -   **Sujeto**: Recurso
+    -   **Predicado**: Propiedad
+    -   **Objeto**: Valor de la propiedad, que puede ser otro recurso,
+        especificado por una URI, o un literal. Un literal es una cadena
+        simple de caracteres definidos por XML, su contenido no es
+        interpretado por RDF y en ocasiones contiene marcado
+        XML adicional. Los literales se distinguen de los recursos
+        gracias a que el modelo RDF no permite que los literales sean
+        sujeto de una declaración.
+
+SPARQL
+------
+
+Proveniente del inglés SPARQL, Protocol and RDF Query Language, es el
+lenguaje de consulta estandarizado para el formato RDF, concretamente,
+para grafos RDF.
+
+En 2004 paso a ser una recomendación del W3C. Este lenguaje de consulta
+esta basado en el emparejamiento de patrones, o graph pattern matching,
+es decir, que define las consultas en forma de patrones obligatorios u
+opcionales de grafo, junto con sus conjunciones y disyunciones,
+permitiendo también indicar los grafos sobre los que se va a realizar la
+consulta. Los resultados de las consultas SPARQL pueden ser conjuntos de
+resultados o grafos RDF.
+
+SPARQL a primera vista tiene una apariencia muy similar a SQL, pero
+tienen una gran diferencia, y es que mientras que SQL trabaja con datos
+que se encuentran en tablas, SPARQL lo hace con datos que están
+implementados en grafos.
+
+LinkedMDB
+=========
+
+**LinkedMDB, la Base de datos de películas enlazadas,** es una base de
+datos de información relacionada con películas expuesta en RDF que se
+puede consultar utilizando SPARQL. Los recursos en LinkedMDB están
+interrelacionados con los recursos definidos en otros conjuntos de
+datos, como YAGO, DBpedia, flickr y el Mashup de libros RDF.
+
+LinkedMDB es en la actualidad la mayor base de datos sobre cine en
+formato RDF que existe. Este conjunto de datos puede ser consultado de
+forma online, obteniendo múltiples resultados, cada uno de los cuales
+posee gran cantidad de enlaces a otras páginas.
+
+LinkedMDB contiene información acerca de varias entidades, sin limitarse
+a la entidad película en exclusiva sino que también se amplía con
+actores, personajes de la película, directores de cine, productores,
+editores, compositores de música, escritores, bandas sonoras de las
+películas, las calificaciones e incluso los premios obtenidos en los
+festivales de cine.
+
+Lo que lo diferencia es que contiene la información semántica que
+permite a las máquinas conocer el significado de cada uno de los
+enlaces, haciendo que estás puedan extraer y filtrar información de
+manera más avanzada.
+
+En la siguiente ilustración pueden verse los enlaces de LMDB a otros
+conjuntos de datos pertenecientes al Linking Open Data Proyect entre los
+que se encuentran:
+
+-   **Geo-names**: Base de datos geográfica gratuita.
+-   **DBpedia**: Conocida como la Wikipedia de la Web Semántica.
+-   **MusicBrainz**: Base de datos musical de contenido abierto.
+-   **FlickrWrappr**: Extiende las capacidades de DBpedia añadiendo
+    enlaces a fotos de flickr.
+-   **Lingvoj**: Permite definir el lenguaje de un recurso.
+-   **RDF Book Mashup**: Contiene información sobre libros, autores y
+    artículos
+
+![](grafo.LMDB.PNG)
+
+Formas de acceso
+----------------
+
+En LMDB el acceso a los datos se puede realizar de varias maneras,
+siendo la elegida para la realización de esta práctica la consulta al
+punto de acceso mediante un cliente SPARQL:
+
+-   Mediante un navegador web (Google Chrome, Mozilla Firefox, etc.)
+-   Mediante un navegador web semántico (Marbles, DISCO, Tabulator)
+    accediendo a <http://data.linkedmdb.org/all>
+-   Mediante un Cliente SPARQL tomando como punto de acceso la siguiente
+    dirección <http://data.linkedmdb.org/sparql>
+
+Puede navegarse por los distintos recursos que pueden consultarse en
+LinkedMDB en este enlace <http://data.linkedmdb.org/directory/actor>.
+
+Pinchando en diferentes recursos pueden verse las propiedades que tiene
+cada recurso y sus valores asociados.
+
+Funcionamiento de la app
+========================
+
+La apicación desarrollada tiene un punto de entrada que es un campo de
+búsqueda.
+
+Escribiendo una palabra y pulsando "intro" se lanza una consulta a
+LinkedMDB que devuelve todas aquellas películas cuyo título contiene la
+palabra de búsqueda (sin tener en cuenta mayúsculas o minúsculas).
+
+Por defecto, cuando iniciamos la aplicación la primera palabra por la
+que realiza la búsqueda es **Love**. La razón de semejante peculiaridad
+es que en opinión de este humilde estudiante, como palabra, quizá pueda
+pronunciarse de modo más elegante en otro idioma, pero en su fondo,
+idiomas aparte, no me ha sido posible encontrar otra más bonita.
+
+Una vez se obtiene un listado de películas que contienen la palabra de
+búsqueda ponemos iniciar la navegación a través del grafo de recursos
+relacionados con la película.
+
+Por cuestiones de alcance de esta práctica, en el grafo sólo se muestran
+nodos de tipo película, actor o director. Es decir, la funcionalidad de
+la aplicación se limita exclusivamente a este tipo de recursos.
+
+Toda vez que se pincha en un nodo se dispara una búsqueda contra
+LinkedMDB que arroja un resultado que actualiza el grafo de
+visualización de la información.
+
+Dependiendo del node en el que se pincha puede ocurrir:
+
+-   **Si se pincha en un nodo de tipo película**. Se lanzan dos
+    consultas, una para obtener todos los actores relacionados con
+    la película. Y otra para obtener todos los directores relacionados
+    con la película. Con ambos resultados se actualiza el grafo.
+
+-   **Si se pincha en un nodo de tipo actor**. Se lanzan dos consultas,
+    una para obtener todas las películas relacionados con el actor. Y
+    otra para obtener todos los directores relacionados con el actor.
+    Con ambos resultados se actualiza el grafo.
+
+-   **Si se pincha en un nodo de tipo director**. Se lanzan dos
+    consultas, una para obtener todos los actores relacionados con
+    el director. Y otra para obtener todos las películas relacionadas
+    con la director. Con ambos resultados se actualiza el grafo.
+
+Consultas
+---------
+
+Se han implementado las siguientes consultas a LinkedMDB:
+
+### findFilms
+
+      findFilms(name: string) &#123;
+        const q = ' ' +
+          'PREFIX  dc: <http://purl.org/dc/terms/>' +
+          'PREFIX  film: <http://data.linkedmdb.org/resource/movie/film>' +
+          'SELECT  ?label ?resource ' +
+          'WHERE &#123; ?resource dc:title ?label.' +
+          `FILTER  regex(?label, "$&#123;name&#125;", "i")&#125;`;
+        return this.runQuery(q);
+      &#125;
+
+Realiza una búsqueda de películas cuyo título contenga la palabra *name*
+sin tener en cuenta mayúsculas o minúsculas.
+
+### getFilmActors
+
+      getFilmActors(filmURI) &#123;
+        const q = ' ' +
+          'PREFIX  mdb: <http://data.linkedmdb.org/resource/movie/> ' +
+          'SELECT  ?uri ?name ' +
+          `WHERE &#123; <$&#123;filmURI&#125;> mdb:actor ?uri. ` +
+          '        ?uri mdb:actor_name ?name. &#125;';
+        return this.runQuery(q);
+      &#125;
+
+Devuelve los actores que han intervenido en una película dada por su
+URI.
+
+Es la primera función que se llama cuando se entra a la aplicación o
+cuando se realiza una búsqueda por término de búsqueda.
+
+### getFilmDirectors
+
+      getFilmDirectors(filmURI) &#123;
+        const q = '' +
+          'PREFIX mdb: <http://data.linkedmdb.org/resource/movie/> ' +
+          'SELECT ?uri ?name ' +
+          `WHERE &#123; <$&#123;filmURI&#125;> mdb:director ?uri. ` +
+          '        ?uri mdb:director_name ?name. &#125;';
+        return this.runQuery(q);
+      &#125;
+
+Devuelve los directores que han dirigido una película dada por su URI.
+
+### getActorFilms
+
+      getActorFilms(actorURI) &#123;
+        const q = '' +
+          'PREFIX mdb: <http://data.linkedmdb.org/resource/movie/> ' +
+          'PREFIX dc: <http://purl.org/dc/terms/>  ' +
+          'SELECT  ?uri ?title ' +
+          `WHERE &#123; ?uri mdb:actor <$&#123;actorURI&#125;>. ` +
+          '        ?uri dc:title ?title. &#125;';
+        return this.runQuery(q);
+      &#125;
+
+Devuelve las películas en las que ha actuado un actor dado por su URI.
+
+### getDirectorFilms
+
+      getDirectorFilms(directorURI) &#123;
+        const q = '' +
+          'PREFIX mdb: <http://data.linkedmdb.org/resource/movie/> ' +
+          'PREFIX dc: <http://purl.org/dc/terms/>  ' +
+          'SELECT  ?uri ?title ' +
+          `WHERE &#123; ?uri mdb:director <$&#123;directorURI&#125;>. ` +
+          '        ?uri dc:title ?title. &#125;';
+        return this.runQuery(q);
+      &#125;
+
+Devuelve las películas que ha dirigido un actor dado por su URI.
+
+### getActorDirectors
+
+      getActorDirectors(actorURI) &#123;
+        const q = '' +
+          'PREFIX mdb: <http://data.linkedmdb.org/resource/movie/> ' +
+          'SELECT ?uri ?name ' +
+          `WHERE  &#123; ?movie mdb:actor <$&#123;actorURI&#125;>. ` +
+          '         ?movie mdb:director ?uri. ' +
+          '         ?uri   mdb:director_name ?name. ' +
+          '&#125;';
+        return this.runQuery(q);
+      &#125;
+
+Devuelve los directores que han dirigido en alguna película al actor
+dado por actorURI.
+
+### getDirectorActors
+
+      getDirectorActors(directorURI) &#123;
+        const q = '' +
+          'PREFIX mdb: <http://data.linkedmdb.org/resource/movie/> ' +
+          'SELECT ?uri ?name ' +
+          `WHERE  &#123; ?movie mdb:director <$&#123;directorURI&#125;>. ` +
+          '         ?movie mdb:actor ?uri. ' +
+          '         ?uri   mdb:actor_name ?name. ' +
+          '&#125;';
+        return this.runQuery(q);
+      &#125;
+
+Devuelve los actores que han sido dirigidos en alguna película por el
+director dado por su URI.
+
+Tecnologías y librerías utilizadas
+==================================
+
+La aplicación está desarrollada casi en su totalidad con javascript.
+
+El código fuente puede verse en **TODO: poner el repo de github**
+
+Se utiliza Angular 2 para la estructura de la misma, vis.js para dibujar
+los grafos de dependencias y boostrap para dortarla de estilo.
+
+Angular 2
+---------
+
+Angular (comúnmente llamado **"Angular 2+"** o **"Angular 2"**), es un
+framework para aplicaciones web desarrollado en TypeScript, de código
+abierto, mantenido por Google, que se utiliza para crear y mantener
+aplicaciones web de una sola página. Su objetivo es aumentar las
+aplicaciones basadas en navegador con capacidad de Modelo Vista
+Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las
+pruebas sean más fáciles.
+
+La biblioteca lee el HTML que contiene atributos de las etiquetas
+personalizadas adicionales, entonces obedece a las directivas de los
+atributos personalizados, y une las piezas de entrada o salida de la
+página a un modelo representado por las variables estándar de
+JavaScript. Los valores de las variables de JavaScript se pueden
+configurar manualmente, o ser recuperados de recursos JSON estáticos o
+dinámicos.
+
+Angular es la evolución de AngularJS aunque incompatible con su
+predecesor.
+
+<img src="https://angular.io/assets/images/logos/angular/angular.svg" width="300px" >
+
+<br/>
+
+Véase <https://angular.io/>.
+
+vis.js
+------
+
+vis.js es una biblioteca de visualización dinámica y basada en
+navegador. La biblioteca está diseñada para ser fácil de usar, manejar
+grandes cantidades de datos dinámicos y permitir la manipulación e
+interacción con los datos. La biblioteca consta de los componentes
+DataSet, Timeline, Network, Graph2d y Graph3d.
+
+En particular, para esta práctica se ha utilizado el componente
+[Network](http://visjs.org/docs/network/).
+
+El componente **Network** es una visualización para mostrar redes y
+redes que constan de nodos y bordes. La visualización es fácil de usar y
+admite formas personalizadas, estilos, colores, tamaños, imágenes y más.
+La visualización de red funciona sin problemas en cualquier navegador
+moderno por hasta varios miles de nodos y bordes. Para manejar una mayor
+cantidad de nodos, la red tiene soporte para clustering.
+
+![](vis.js.logo.PNG)
+
+<br/>
+
+Véase <http://visjs.org>.
+
+Bootstrap
+---------
+
+Bootstrap es un framework web o conjunto de herramientas de código
+abierto para diseño de sitios y aplicaciones web. Contiene plantillas de
+diseño con tipografía, formularios, botones, cuadros, menús de
+navegación y otros elementos de diseño basado en HTML y CSS, así como
+extensiones de JavaScript adicionales. A diferencia de muchos frameworks
+web, solo se ocupa del desarrollo front-end.
+
+Bootstrap es el segundo proyecto más destacado en GitHub y es usado por
+la NASA y la MSNBC entre otras organizaciones.
+
+Bootstrap tiene un soporte relativamente incompleto para HTML5 y CSS 3,
+pero es compatible con la mayoría de los navegadores web. La información
+básica de compatibilidad de sitios web o aplicaciones está disponible
+para todos los dispositivos y navegadores. Existe un concepto de
+compatibilidad parcial que hace disponible la información básica de un
+sitio web para todos los dispositivos y navegadores. Por ejemplo, las
+propiedades introducidas en CSS3 para las esquinas redondeadas,
+gradientes y sombras son usadas por Bootstrap a pesar de la falta de
+soporte de navegadores antiguos. Esto extiende la funcionalidad de la
+herramienta, pero no es requerida para su uso.
+
+Desde la versión 2.0 también soporta diseños web adaptables. Esto
+significa que el diseño gráfico de la página se ajusta dinámicamente,
+tomando en cuenta las características del dispositivo usado
+(Computadoras, tabletas, teléfonos móviles).
+
+Bootstrap es de código abierto y está disponible en GitHub. Los
+desarrolladores están motivados a participar en el proyecto y a hacer
+sus propias contribuciones a la plataforma.
+
+![](assets/bootstrap.logo.png)
+
+<br/>
+
+Véase <https://getbootstrap.com/>.
+
+Hosting
+=======
+
+Stackblitz
+----------
+
+La mayor parte del trabajo de desarrollo de esta práctica se ha
+realizado con <https://stackblitz.com/>.
+
+StackBlitz es un IDE online donde se pueden crear proyectos Angular &
+React que están inmediatamente en línea y se pueden compartir a través
+de un enlace, en un solo clic. Se ocupa automáticamente de la
+instalación de dependencias, compilación, agrupamiento y recarga en
+caliente al mismo tiempo que se escribe.
+
+Proxy heroku
+------------
+
+Heroku es una plataforma en la nube basada en un sistema de contenedores
+administrados, con servicios de datos integrados y un poderoso
+ecosistema, para implementar y ejecutar aplicaciones modernas. La
+experiencia de los desarrolladores de Heroku es un enfoque centrado en
+aplicaciones para la entrega de software, integrado con las herramientas
+y flujos de trabajo de desarrollador más populares de la actualidad.
+
+Ocurre que la web la he alojado en un sitio seguro
+<https://amanas17.stackblitz.io>.
+
+Sin embargo el web service de LinkedMDB al que se hacen las consultas
+SPARQL no es seguro <http://data.linkedmdb.org/sparql>.
+
+Esto provoca que los navegadores actuales bloqueen esas consutas, pues
+típicamente no permiten que desde un sitio seguro se acceda a contenido
+no seguro de otro sitio de internet.
+
+Para superar este inconveniente he desarrollado un pequeño proxy en otro
+sitio seguro <https://imdbproxy.herokuapp.com/sparql> que lo que hace es
+redirigir las consultas al sitio no seguro de LinkedMDB.
+
+Es decir, la app que he desarrollado está en un sitio seguro; desde el
+cliente las consultas las hace a otro sitio seguro (el proxy en heroku).
+Y este proxy, ahora ya a nivel de servidor, no de cliente, si puede
+redirigir las consultas al sitio inseguro de LinkedMDB.
+
+Referencias
+===========
+
+-   [https://es.wikipedia.org/wiki/Web\_semántica](https://es.wikipedia.org/wiki/Web_semántica)
+-   <https://webtematica.com/que-es-la-web-semantica>
+-   <http://events.linkeddata.org/ldow2009/papers/ldow2009_paper12.pdf>
+-   <https://es.slideshare.net/olafhartig/hartig-tutorialicwe12-1-13813706>
+-   <https://linkeddataenbibliotecas.wordpress.com/2013/01/21/linkedmdb-y-sus-fuentes-de-datos/>
+-   <https://uvadoc.uva.es/bitstream/10324/13505/1/TFG-B.784.pdf>
+
+
+
+
+
+
+
+
+
+
+</markdown>
+	</div>
+</div>
+</div>
